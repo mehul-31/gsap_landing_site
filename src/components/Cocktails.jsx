@@ -8,24 +8,39 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Cocktails() {
 
-    useGSAP(() => {
-        const parallaxTimeline = gsap.timeline({
-            scrollTrigger: {
-                trigger:'#cocktails',
-                start:"top 30% ",
-                end:'bottom 80%',
-                scrub:true,
-            }
-        })
+   useGSAP(() => {
+  const parallaxTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#cocktails",
+      start: "top 60%",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
 
-        parallaxTimeline.from('#c-left-leaf', {
-            x:-100, y:100,
-
-        })
-        .from('#c-right-leaf', {
-            x:100, y:100
-        })
+  parallaxTimeline
+    .from("#c-left-leaf", {
+      x: -150,
+      y: 150,
+      rotate: -15,
+      opacity: 0,
+      scale: 0.8,
+      ease: "power2.out",
     })
+    .from(
+      "#c-right-leaf",
+      {
+        x: 150,
+        y: 150,
+        rotate: 15,
+        opacity: 0,
+        scale: 0.8,
+        ease: "power2.out",
+      },
+      "<" // start at same time as previous
+    );
+});
+
 
   return (
     <section id='cocktails' className='noisy'>
